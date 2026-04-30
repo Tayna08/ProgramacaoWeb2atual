@@ -35,4 +35,13 @@ export class ProdutoService {
 
         return produto.save(); 
     }
+    async remove(id: number): Promise<Produto | null> {
+        const produto = await this.findOne(id);
+
+        if(!produto) {
+            return null;
+        }
+
+        return produto.remove(); 
+    }
 }

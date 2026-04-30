@@ -52,4 +52,25 @@ export class ProdutoController {
     async formEditarSalvar(@Param('id') id: number, @Body() dados: any): Promise<void>{
         await this.produtoService.update(id, dados);
     }
+    @Get(':id/excluir')
+    @Render('produto/remover')
+    async formExcluir(@Param('id') id: number): Promise<object> {
+        const produto = await this.produtoService.findOne(id);
+
+        if(!produto) {
+            throw new Error('Produto não encontrado!');            
+        }
+        
+        return {
+            titulo: 'Exclusão de Produto',
+            subtitulo: `Exclusão do produto: ${produto.nome}`,
+            produto,
+        };
+    }
+
+    @Post(':id/excluir')
+    @Redirect('/produtos')
+    async formExcluirSalvar(@Param('id') id: number): Promise<void>{
+        await this.produtoService.remove(id);
+    }
 }
