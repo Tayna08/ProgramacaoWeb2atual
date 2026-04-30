@@ -51,7 +51,7 @@
                             <% for( let index = 0; index < produtos.length; index++ ) { %>
                                 <tr>
                                     <td><%= index + 1 %></td>
-                                    <td><%= produtos[index].nome %></td>
+                                    <td><%= produtos[index].descricao %></td>
                                     <td><%= moneyFormat(produtos[index].preco) %></td>
                                     <td>
                                         <% if (produtos[index].ativo) { %>
@@ -71,6 +71,10 @@
                                         </a>
                                         <a href="/produtos/<%= produtos[index].id %>/excluir" class="text-danger">
                                             <i class="fa fa-trash fa-lg"></i>
+                                        </a>
+                                        <a href="#" class= "text-secondary remover" data-descricao= "<%= produtos[index].descricao %>" data-id="<%= produtos[index].id %>">
+                                            <i class="fa fa-trash fa-lg"></i>
+
                                         </a>
                                     </td>
                                 </tr>

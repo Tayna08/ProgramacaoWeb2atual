@@ -43,11 +43,11 @@
                             </tr>
                             <tr>
                                 <th>Descrição</th>
-                                <td><%=produto.descricao %></td>
+                                <td><%=produto.descricao%></td>
                             </tr>
                             <tr>
                                 <th>Preço</th>
-                                <td><%=produto.preco %></td>
+                                <td><%= moneyFormat(produto.preco)%></td>
                             </tr>
                         </tbody>
                     </table>
